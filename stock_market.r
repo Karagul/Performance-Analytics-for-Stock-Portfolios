@@ -33,8 +33,7 @@ pct<-table(eod$symbol)/(nrow(tdays)-1)
 selected_symbols_daily<-names(pct)[which(pct>=0.99)]
 eod_complete<-eod[which(eod$symbol %in% selected_symbols_daily),,drop=F]
 require(reshape2)
-eod_pvt<-dcast(eod_complete, date ~ symbol,value.var='adj_close',fun.aggregate = mean,
-fill=NULL)
+eod_pvt<-dcast(eod_complete, date ~ symbol,value.var='adj_close',fun.aggregate = mean,fill=NULL)
 eod_pvt[1:10,1:5]
 
 # Merge with Calendar
